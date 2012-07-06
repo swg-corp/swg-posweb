@@ -14,4 +14,5 @@ import com.swg.posweb.domain.Project;
  */
 public interface ProjectRepository extends JpaRepository<Project, Long>,JpaSpecificationExecutor<Project>{
 
+	Project findByProjectName(String projectName);
 }

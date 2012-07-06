@@ -115,7 +115,7 @@ public class Project implements IShareableProject,IDownloadable {
 	}
 
 	public void setProjectManagerName(String projectManagerName) {
-		if(!resources.isEmpty()){
+		if(!resources.isEmpty() && projectManagerName.isEmpty()){
 			this.projectManagerName=resources.get(0).getUsername();
 		}else{
 			this.projectManagerName = projectManagerName;
@@ -124,6 +124,7 @@ public class Project implements IShareableProject,IDownloadable {
 	}
 	
 	public String getProjectManagerName() {
+		projectManagerName=resources.get(0).getUsername();
 		return projectManagerName;
 	}
 	
@@ -131,9 +132,9 @@ public class Project implements IShareableProject,IDownloadable {
 	@Override
 	public IResource getProjectManager() {
 		IResource resource=null;
-		for(Resource r:resources){
-			if(r.getUsername().equals(projectManagerName)){
-				resource=r;
+		for(Resource res:getResources()){
+			if(res.getUsername().equals(getProjectManagerName())){
+				resource=res;
 			}
 		}
 		return resource;
