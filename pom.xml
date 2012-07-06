@@ -414,5 +414,6 @@
 	<modules>
 		<module>swg-posweb-domain</module>
 		<module>swg-posweb-core</module>
+		<module>swg-posweb-service</module>
 	</modules>
 </project>

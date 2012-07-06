@@ -11,7 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.swg.posweb.domain.Resource;
-import com.swg.posweb.domain.service.ResourceService;
+import com.swg.posweb.service.ResourceService;
 
 /**
  * @author satriaprayoga

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.swg.posweb.domain.service;
+package com.swg.posweb.service;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.swg.posweb.domain.Resource;
 import com.swg.posweb.domain.repo.ResourceRepository;
-import com.swg.posweb.domain.service.callback.AuthorityResourceCallback;
-import com.swg.posweb.domain.service.callback.EncodePasswordCallback;
 import com.swg.posweb.service.AbstractCrudService;
 import com.swg.posweb.service.PoswebServiceException;
+import com.swg.posweb.service.callback.AuthorityResourceCallback;
+import com.swg.posweb.service.callback.EncodePasswordCallback;
 
 
 /**
@@ -52,7 +52,7 @@ public class PoswebResourceService extends AbstractCrudService<Resource> impleme
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		addCallback(new EncodePasswordCallback("SHA1"));
+		addCallback(new EncodePasswordCallback());
 		addCallback(new AuthorityResourceCallback());
 	}
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.swg.posweb.domain.service.callback;
+package com.swg.posweb.service.callback;
 
 import com.swg.posweb.domain.Authority;
 import com.swg.posweb.domain.Resource;

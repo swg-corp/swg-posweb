@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.swg.posweb.domain.service;
+package com.swg.posweb.service;
 
 import com.swg.posweb.domain.Resource;
 import com.swg.posweb.service.CrudService;
