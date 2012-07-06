@@ -3,7 +3,9 @@
  */
 package com.swg.posweb.domain;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.swg.posweb.IResource;
 import com.swg.posweb.ISkill;
@@ -21,7 +23,8 @@ public class Resource implements IResource {
 	private String realName;
 	private String email;
 	
-	private List<Skill> skills;
+	private List<Skill> skills=new ArrayList<Skill>();
+	private List<Authority> authorities=new ArrayList<Authority>();
 	
 	public void setUsername(String username) {
 		this.username = username;
@@ -67,6 +70,24 @@ public class Resource implements IResource {
 	@Override
 	public List<? extends ISkill> getSkills() {
 		return skills;
+	}
+	
+	public List<Authority> getAuthorities() {
+		return authorities;
+	}
+	
+	@Override
+	public Set<String> getRoles() {
+		Set<String> roles=new java.util.HashSet<String>();
+		for(Authority a:authorities){
+			roles.add(a.getRole());
+		}
+		return roles;
+	}
+	
+	public void addRole(Authority a){
+		a.setResource(this);
+		getAuthorities().add(a);
 	}
 
 }

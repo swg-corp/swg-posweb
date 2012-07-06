@@ -31,7 +31,7 @@ public class GitTeamService implements TeamService{
 					.readEnvironment()
 					.findGitDir()
 					.build();
-			repository=new GitRepository(r);
+			repository=new GitRepository(r,project);
 		}catch(IOException e){
 			throw new PoswebErrorException("failed to build "+project.getProjectName()+" repository",e);
 		}
