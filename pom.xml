@@ -10,8 +10,8 @@
 		<java.version>1.6</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<slf4j.version>1.6.4</slf4j.version>
-		<spring.version>3.1.0.RELEASE</spring.version>
-		<springsec.version>3.1.0.RELEASE</springsec.version>
+		<spring.version>3.1.1.RELEASE</spring.version>
+		<springsec.version>3.1.1.RELEASE</springsec.version>
 		<jetty.version>8.0.1.v20110908</jetty.version>
 	</properties>
 
@@ -240,7 +240,7 @@
 			<dependency>
 				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-jpa</artifactId>
-				<version>1.0.2.RELEASE</version>
+				<version>1.1.0.RELEASE</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>

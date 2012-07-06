@@ -50,19 +50,18 @@ public class CryptUtil {
 			}
 			return new String(md5Chars);
 		} catch (NoSuchAlgorithmException nsae) {
-			throw new RuntimeException(
-					"No MD5 algorithm, unable to compute MD5");
+			throw new RuntimeException();
 		}
 	}
 	
 	 public static String getSHA1(String target, String charsetName)
 	            throws UnsupportedEncodingException {
 	        try {
-	            return Base64.encodeBase64String(MessageDigest.getInstance("SHA1").digest(
-	                    target.getBytes(charsetName)));
+	        	byte[] sha1=MessageDigest.getInstance("SHA1").digest(
+	                    target.getBytes(charsetName));
+	            return Base64.encodeBase64String(sha1);
 	        } catch (NoSuchAlgorithmException nsae) {
-	            throw new RuntimeException(
-	                    "No SHA1 algorithm, unable to compute SHA1");
+	            throw new RuntimeException();
 	        }
 	    }
 }
