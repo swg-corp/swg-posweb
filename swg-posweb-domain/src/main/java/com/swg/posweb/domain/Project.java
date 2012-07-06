@@ -10,6 +10,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
 import org.apache.commons.io.FileUtils;
 
 import com.swg.posweb.IDownloadable;
@@ -22,24 +33,34 @@ import com.swg.posweb.PoswebErrorException;
  * @author satriaprayoga
  *
  */
+@Entity
 public class Project implements IShareableProject,IDownloadable {
 
 	private static final long serialVersionUID = -5306494465708485893L;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String projectName;
 	private String projectManagerName;
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
+	@Temporal(TemporalType.DATE)
 	private Date endDate;
 	
+	@ManyToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE})
 	private List<Resource> resources=new ArrayList<Resource>();
+	@OneToMany(mappedBy="project", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Milestone> milestones=new ArrayList<Milestone>();
 	
 	private String commitUrl;
 	private String checkOutUrl;
+	
+	@Temporal(TemporalType.DATE)
 	private Date lastUpdate;
 	private String projectTeamDir;
 	
+	@Transient
 	private URL downloadUrl;
 	private String fileName;
 	private String downloadFolder;

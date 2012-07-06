@@ -7,6 +7,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.swg.posweb.IProject;
 import com.swg.posweb.IResource;
 import com.swg.posweb.PoswebErrorException;
@@ -15,18 +25,25 @@ import com.swg.posweb.PoswebErrorException;
  * @author satriaprayoga
  *
  */
+@Entity
 public class Milestone implements IProject {
 	private static final long serialVersionUID = -533024767015272693L;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	@ManyToOne
 	private Project project;
 	
+	@OneToMany(mappedBy="milestone", cascade=CascadeType.ALL)
 	private List<Todo> todos=new ArrayList<Todo>();
 	
 	private String milestoneName;
 	
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
+	@Temporal(TemporalType.DATE)
 	private Date endDate;
 	
 	public void setId(Long id) {
