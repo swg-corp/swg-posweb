@@ -5,13 +5,12 @@ package com.swg.posweb.service.callback;
 
 import com.swg.posweb.domain.Authority;
 import com.swg.posweb.domain.Resource;
-import com.swg.posweb.service.CrudCallback;
 
 /**
  * @author satriaprayoga
  *
  */
-public class AuthorityResourceCallback implements CrudCallback<Resource>{
+public class AuthorityResourceCallback extends CrudCallbackAdapter<Resource>{
 
 	@Override
 	public void onCreate(Resource resource) {
@@ -19,16 +18,6 @@ public class AuthorityResourceCallback implements CrudCallback<Resource>{
 		authority.setResource(resource);
 		resource.getAuthorities().add(authority);
 		authority.setRole("ROLE_DEVELOPER");
-	}
-
-	@Override
-	public void onDelete(Resource resource) {
-		
-	}
-
-	@Override
-	public void onUpdate(Resource resource) {
-		
 	}
 
 }

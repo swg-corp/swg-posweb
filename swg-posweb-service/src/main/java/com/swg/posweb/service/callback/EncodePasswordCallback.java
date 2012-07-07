@@ -4,14 +4,13 @@
 package com.swg.posweb.service.callback;
 
 import com.swg.posweb.domain.Resource;
-import com.swg.posweb.service.CrudCallback;
 import com.swg.posweb.util.CryptUtil;
 
 /**
  * @author satriaprayoga
  *
  */
-public class EncodePasswordCallback implements CrudCallback<Resource> {
+public class EncodePasswordCallback extends CrudCallbackAdapter<Resource> {
 	
 	private final String alghoritm;
 	
@@ -34,14 +33,6 @@ public class EncodePasswordCallback implements CrudCallback<Resource> {
 		resource.setPassword(password);
 	}
 
-	@Override
-	public void onDelete(Resource resource) {
-		
-	}
-
-	@Override
-	public void onUpdate(Resource resource) {
-		
-	}
+	
 
 }
